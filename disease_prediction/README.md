@@ -278,5 +278,5 @@ MIT License — see [LICENSE](LICENSE) for details.
 ---
 
 <div align="center">
-  Built with ❤️ as an AI/ML Portfolio Project · <a href="https://github.com/yourusername">@yourusername</a>
+  Built with ❤️ as an AI/ML Portfolio Project · <a href="https://github.com/goel091">goel091</a>
 </div>
