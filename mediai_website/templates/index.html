@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>MediAI — AI Disease Prediction</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/static/css/style.css"/>
+</head>
+<body>
+
+<!-- ─── NAV ─────────────────────────────────────────────────────────────── -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="#hero">
+      <span class="logo-icon">✦</span>
+      <span>MediAI</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#predict">Diagnose</a></li>
+      <li><a href="#how">How it Works</a></li>
+      <li><a href="#stats">Stats</a></li>
+      <li><a href="#diseases">Diseases</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+    <button class="nav-cta" onclick="scrollTo('#predict')">Try Now</button>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ─── HERO ─────────────────────────────────────────────────────────────── -->
+<section class="hero" id="hero">
+  <div class="hero-bg">
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+    <div class="orb orb3"></div>
+    <svg class="hero-grid" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+      <defs><pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+        <path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+      </pattern></defs>
+      <rect width="100%" height="100%" fill="url(#grid)"/>
+    </svg>
+  </div>
+  <div class="hero-content">
+    <div class="hero-tag">Powered by Machine Learning</div>
+    <h1 class="hero-title">
+      Predict Disease<br/>
+      <em>Before</em> It Gets Worse
+    </h1>
+    <p class="hero-desc">
+      Enter your symptoms and let our AI — trained on 4,920 patient records
+      across 41 diseases — surface the most likely diagnosis with confidence scores
+      and risk assessment.
+    </p>
+    <div class="hero-actions">
+      <button class="btn-primary" onclick="scrollTo('#predict')">Start Diagnosis</button>
+      <button class="btn-ghost" onclick="scrollTo('#how')">How it works</button>
+    </div>
+    <div class="hero-chips">
+      <span class="chip">41 Diseases</span>
+      <span class="chip">132 Symptoms</span>
+      <span class="chip">91.9% Accuracy</span>
+      <span class="chip">Real ML Model</span>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="pulse-ring r1"></div>
+    <div class="pulse-ring r2"></div>
+    <div class="pulse-ring r3"></div>
+    <div class="hero-card-float card-a">
+      <div class="hcf-label">Top prediction</div>
+      <div class="hcf-disease">Dengue Fever</div>
+      <div class="hcf-bar"><div class="hcf-fill" style="width:84%"></div></div>
+      <div class="hcf-conf">84% confidence</div>
+    </div>
+    <div class="hero-card-float card-b">
+      <div class="hcf-risk high">HIGH RISK</div>
+      <div class="hcf-sym">high_fever · joint_pain · rash</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── STATS BAR ─────────────────────────────────────────────────────────── -->
+<section class="statsbar" id="stats">
+  <div class="statsbar-inner">
+    <div class="stat-item">
+      <span class="stat-num" data-target="4920">0</span>
+      <span class="stat-label">Patient Records</span>
+    </div>
+    <div class="stat-div"></div>
+    <div class="stat-item">
+      <span class="stat-num" data-target="41">0</span>
+      <span class="stat-label">Diseases Modelled</span>
+    </div>
+    <div class="stat-div"></div>
+    <div class="stat-item">
+      <span class="stat-num" data-target="132">0</span>
+      <span class="stat-label">Symptom Features</span>
+    </div>
+    <div class="stat-div"></div>
+    <div class="stat-item">
+      <span class="stat-num" data-target="92" data-suffix="%">0</span>
+      <span class="stat-label">Model Accuracy</span>
+    </div>
+    <div class="stat-div"></div>
+    <div class="stat-item">
+      <span class="stat-num" data-target="3">0</span>
+      <span class="stat-label">ML Algorithms</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PREDICT SECTION ───────────────────────────────────────────────────── -->
+<section class="predict-section" id="predict">
+  <div class="container">
+    <div class="section-label">AI Diagnosis Engine</div>
+    <h2 class="section-title">Tell Us Your Symptoms</h2>
+    <p class="section-sub">Select every symptom you're experiencing. More symptoms = more accurate prediction.</p>
+
+    <div class="predict-layout">
+
+      <!-- LEFT: SYMPTOM PICKER -->
+      <div class="symptom-panel">
+        <div class="sp-header">
+          <span class="sp-title">Symptom Selector</span>
+          <span class="sp-count" id="selCount">0 selected</span>
+        </div>
+        <div class="sp-search-wrap">
+          <svg class="sp-search-icon" viewBox="0 0 20 20" fill="none"><circle cx="8.5" cy="8.5" r="5" stroke="currentColor" stroke-width="1.5"/><path d="M13 13l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <input type="text" id="symSearch" class="sp-search" placeholder="Search symptoms…" oninput="filterSymptoms(this.value)"/>
+        </div>
+
+        <!-- Category quick filters -->
+        <div class="sp-cats" id="catBtns">
+          <button class="cat-btn active" data-cat="all" onclick="filterCat(this,'all')">All</button>
+          <button class="cat-btn" data-cat="fever" onclick="filterCat(this,'fever')">Fever</button>
+          <button class="cat-btn" data-cat="pain" onclick="filterCat(this,'pain')">Pain</button>
+          <button class="cat-btn" data-cat="skin" onclick="filterCat(this,'skin')">Skin</button>
+          <button class="cat-btn" data-cat="gastro" onclick="filterCat(this,'gastro')">Gastro</button>
+          <button class="cat-btn" data-cat="neuro" onclick="filterCat(this,'neuro')">Neuro</button>
+          <button class="cat-btn" data-cat="resp" onclick="filterCat(this,'resp')">Respiratory</button>
+        </div>
+
+        <div class="sym-grid" id="symGrid">
+          <!-- chips injected by JS -->
+          <div class="sym-loading">Loading symptoms…</div>
+        </div>
+
+        <div class="sp-footer">
+          <button class="clear-btn" onclick="clearAll()">Clear all</button>
+          <button class="predict-btn" id="predictBtn" onclick="predict()" disabled>
+            <svg viewBox="0 0 20 20" fill="none" width="16" height="16"><path d="M10 2a8 8 0 100 16A8 8 0 0010 2z" stroke="currentColor" stroke-width="1.5"/><path d="M7 10l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Predict Disease
+          </button>
+        </div>
+      </div>
+
+      <!-- RIGHT: RESULTS -->
+      <div class="result-panel" id="resultPanel">
+
+        <!-- Empty state -->
+        <div class="result-empty" id="resultEmpty">
+          <div class="empty-icon">
+            <svg viewBox="0 0 64 64" fill="none" width="64" height="64">
+              <circle cx="32" cy="32" r="28" stroke="currentColor" stroke-width="1.5" opacity=".2"/>
+              <path d="M32 20v14M32 38v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".5"/>
+            </svg>
+          </div>
+          <p>Select at least <strong>3 symptoms</strong> and click<br/><em>Predict Disease</em> to see results.</p>
+        </div>
+
+        <!-- Loading state -->
+        <div class="result-loading" id="resultLoading" style="display:none">
+          <div class="spinner"></div>
+          <p>Analysing symptoms…</p>
+        </div>
+
+        <!-- Result card -->
+        <div class="result-card" id="resultCard" style="display:none">
+          <div class="rc-top">
+            <div class="rc-badge" id="rcRisk">—</div>
+            <div class="rc-disclaimer">Educational use only · Consult a doctor</div>
+          </div>
+          <div class="rc-disease" id="rcDisease">—</div>
+          <div class="rc-conf-row">
+            <span class="rc-conf-label">Confidence</span>
+            <span class="rc-conf-val" id="rcConf">—</span>
+          </div>
+          <div class="rc-bar-outer">
+            <div class="rc-bar-inner" id="rcBar"></div>
+          </div>
+
+          <div class="rc-divider"></div>
+          <div class="rc-top5-title">Top differential diagnoses</div>
+          <div class="rc-top5" id="rcTop5"></div>
+
+          <div class="rc-divider"></div>
+          <div class="rc-syms-used">
+            <span class="rc-syms-label">Symptoms analysed:</span>
+            <div class="rc-syms-chips" id="rcSymsUsed"></div>
+          </div>
+
+          <div class="rc-actions">
+            <button class="btn-outline" onclick="clearAll()">New Diagnosis</button>
+            <button class="btn-outline" onclick="shareResult()">Share</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── HOW IT WORKS ──────────────────────────────────────────────────────── -->
+<section class="how-section" id="how">
+  <div class="container">
+    <div class="section-label">The Process</div>
+    <h2 class="section-title">How MediAI Works</h2>
+    <div class="how-grid">
+      <div class="how-card">
+        <div class="how-num">01</div>
+        <div class="how-icon">
+          <svg viewBox="0 0 40 40" fill="none" width="36" height="36"><rect x="6" y="6" width="28" height="28" rx="6" stroke="currentColor" stroke-width="1.5"/><path d="M13 20h14M20 13v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Select Symptoms</h3>
+        <p>Choose from 132 clinically-validated binary symptom indicators — from itching and fever to neurological signs.</p>
+      </div>
+      <div class="how-arrow">→</div>
+      <div class="how-card">
+        <div class="how-num">02</div>
+        <div class="how-icon">
+          <svg viewBox="0 0 40 40" fill="none" width="36" height="36"><circle cx="20" cy="20" r="12" stroke="currentColor" stroke-width="1.5"/><path d="M20 14v6l4 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <h3>ML Inference</h3>
+        <p>Your symptom vector passes through a StandardScaler, then a Logistic Regression classifier trained on 3,936 records.</p>
+      </div>
+      <div class="how-arrow">→</div>
+      <div class="how-card">
+        <div class="how-num">03</div>
+        <div class="how-icon">
+          <svg viewBox="0 0 40 40" fill="none" width="36" height="36"><path d="M8 28l8-8 6 6 10-12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Ranked Results</h3>
+        <p>Top-5 differential diagnoses are returned with probability scores, confidence bar, and a Low / Medium / High risk tag.</p>
+      </div>
+      <div class="how-arrow">→</div>
+      <div class="how-card">
+        <div class="how-num">04</div>
+        <div class="how-icon">
+          <svg viewBox="0 0 40 40" fill="none" width="36" height="36"><path d="M20 8v4M20 28v4M8 20h4M28 20h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="20" cy="20" r="6" stroke="currentColor" stroke-width="1.5"/></svg>
+        </div>
+        <h3>Take Action</h3>
+        <p>Use results as a starting point for a real medical consultation. Never a replacement — always a conversation starter.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── MODEL PERFORMANCE ─────────────────────────────────────────────────── -->
+<section class="perf-section">
+  <div class="container">
+    <div class="section-label">Under the Hood</div>
+    <h2 class="section-title">Model Performance</h2>
+    <p class="section-sub">Three classifiers trained and compared. Best model auto-selected by F1-weighted score.</p>
+    <div class="perf-grid">
+      <div class="perf-card">
+        <div class="perf-model-name">K-Nearest Neighbours</div>
+        <div class="perf-metrics">
+          <div class="pm"><span class="pm-label">Accuracy</span><span class="pm-val">90.65%</span></div>
+          <div class="pm"><span class="pm-label">F1 Score</span><span class="pm-val">0.904</span></div>
+          <div class="pm"><span class="pm-label">ROC-AUC</span><span class="pm-val">0.986</span></div>
+          <div class="pm"><span class="pm-label">CV F1</span><span class="pm-val">0.899</span></div>
+        </div>
+        <div class="perf-bar-wrap"><div class="perf-bar" style="width:90.65%"></div></div>
+      </div>
+      <div class="perf-card best-model">
+        <div class="best-badge">★ Best Model</div>
+        <div class="perf-model-name">Logistic Regression</div>
+        <div class="perf-metrics">
+          <div class="pm"><span class="pm-label">Accuracy</span><span class="pm-val highlight">91.87%</span></div>
+          <div class="pm"><span class="pm-label">F1 Score</span><span class="pm-val highlight">0.920</span></div>
+          <div class="pm"><span class="pm-label">ROC-AUC</span><span class="pm-val highlight">0.997</span></div>
+          <div class="pm"><span class="pm-label">CV F1</span><span class="pm-val highlight">0.910</span></div>
+        </div>
+        <div class="perf-bar-wrap"><div class="perf-bar best" style="width:91.87%"></div></div>
+      </div>
+      <div class="perf-card">
+        <div class="perf-model-name">Random Forest</div>
+        <div class="perf-metrics">
+          <div class="pm"><span class="pm-label">Accuracy</span><span class="pm-val">91.77%</span></div>
+          <div class="pm"><span class="pm-label">F1 Score</span><span class="pm-val">0.917</span></div>
+          <div class="pm"><span class="pm-label">ROC-AUC</span><span class="pm-val">0.997</span></div>
+          <div class="pm"><span class="pm-label">CV F1</span><span class="pm-val">0.914</span></div>
+        </div>
+        <div class="perf-bar-wrap"><div class="perf-bar" style="width:91.77%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── DISEASE LIST ───────────────────────────────────────────────────────── -->
+<section class="diseases-section" id="diseases">
+  <div class="container">
+    <div class="section-label">Coverage</div>
+    <h2 class="section-title">41 Diseases Covered</h2>
+    <p class="section-sub">From common infections to complex metabolic disorders.</p>
+    <div class="disease-grid" id="diseaseGrid">
+      <!-- injected by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ─── ABOUT / TECH ───────────────────────────────────────────────────────── -->
+<section class="about-section" id="about">
+  <div class="container">
+    <div class="about-layout">
+      <div class="about-text">
+        <div class="section-label">The Project</div>
+        <h2 class="section-title">Built for Portfolio.<br/>Designed for Real Use.</h2>
+        <p>MediAI is a production-ready end-to-end data science project demonstrating real-world ML engineering — from raw data preprocessing through model training, SHAP explainability, to live web deployment.</p>
+        <p>The ML backend is written in Python using scikit-learn. The web layer is Flask + Vanilla JS — no heavy frameworks, just clean, fast, responsive code.</p>
+        <div class="tech-chips">
+          <span class="tech-chip">Python 3.11</span>
+          <span class="tech-chip">Scikit-learn</span>
+          <span class="tech-chip">Flask</span>
+          <span class="tech-chip">SHAP</span>
+          <span class="tech-chip">Pandas / NumPy</span>
+          <span class="tech-chip">Joblib</span>
+          <span class="tech-chip">Docker</span>
+          <span class="tech-chip">Streamlit</span>
+        </div>
+      </div>
+      <div class="about-cards">
+        <div class="about-card">
+          <div class="ac-icon">🧬</div>
+          <div class="ac-title">Real ML Model</div>
+          <div class="ac-desc">Trained Logistic Regression with StandardScaler, 5-fold CV, GridSearchCV tuning.</div>
+        </div>
+        <div class="about-card">
+          <div class="ac-icon">🔬</div>
+          <div class="ac-title">SHAP Explainability</div>
+          <div class="ac-desc">Every prediction explained via SHAP values — see which symptoms drive the diagnosis.</div>
+        </div>
+        <div class="about-card">
+          <div class="ac-icon">📊</div>
+          <div class="ac-title">Full EDA</div>
+          <div class="ac-desc">6 exploratory plots + 5 model evaluation charts generated during training.</div>
+        </div>
+        <div class="about-card">
+          <div class="ac-icon">🐳</div>
+          <div class="ac-title">Docker Ready</div>
+          <div class="ac-desc">Single `docker build` trains and serves the entire system. Deploy anywhere.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── DISCLAIMER ────────────────────────────────────────────────────────── -->
+<div class="disclaimer-banner">
+  <strong>⚠ Medical Disclaimer:</strong> MediAI is for educational and portfolio purposes only.
+  It does not replace professional medical advice, diagnosis, or treatment.
+  Always consult a qualified healthcare provider.
+</div>
+
+<!-- ─── FOOTER ────────────────────────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="logo-icon">✦</span>
+      <span>MediAI</span>
+    </div>
+    <div class="footer-links">
+      <a href="#predict">Diagnose</a>
+      <a href="#how">How it Works</a>
+      <a href="#about">About</a>
+      <a href="https://github.com" target="_blank">GitHub</a>
+    </div>
+    <div class="footer-copy">© 2024 MediAI · ML Portfolio Project · Educational Use Only</div>
+  </div>
+</footer>
+
+<script src="/static/js/main.js"></script>
+</body>
+</html>

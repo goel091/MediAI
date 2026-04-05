@@ -1,0 +1,35 @@
+# ─────────────────────────────────────────────
+# AI-Powered Disease Prediction System
+# requirements.txt
+# ─────────────────────────────────────────────
+
+# Core Data Science
+numpy==1.26.4
+pandas==2.2.2
+scikit-learn==1.4.2
+scipy==1.13.0
+
+# Gradient Boosting
+xgboost==2.0.3
+
+# Visualization
+matplotlib==3.8.4
+seaborn==0.13.2
+plotly==5.22.0
+
+# Model Explainability
+shap==0.45.1
+
+# Model Persistence
+joblib==1.4.2
+
+# Web Application
+streamlit==1.35.0
+
+# Utilities
+tqdm==4.66.4
+python-dotenv==1.0.1
+colorlog==6.8.2
+
+# Testing
+pytest==8.2.0

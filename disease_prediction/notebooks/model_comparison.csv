@@ -1,0 +1,4 @@
+Model,Accuracy,Precision,Recall,F1 (weighted),ROC-AUC,CV Mean F1,CV Std,Train Time (s)
+KNN,0.9065,0.9083,0.9065,0.9043,0.9862,0.8988,0.0049,0.0
+Logistic Regression,0.9187,0.9239,0.9187,0.92,0.9969,0.9102,0.0066,0.36
+Random Forest,0.9177,0.9212,0.9177,0.9171,0.9971,0.9143,0.003,0.53
