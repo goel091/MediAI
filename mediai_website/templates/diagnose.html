@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block title %}Diagnose — MediAI{% endblock %}
+{% block content %}
+
+<div class="page-hero small">
+  <div class="page-hero-content">
+    <div class="sec-label">AI Diagnosis Engine</div>
+    <h1 class="page-title">Select Your Symptoms</h1>
+    <p class="page-sub">Choose every symptom you are experiencing. More symptoms = more accurate prediction.</p>
+  </div>
+</div>
+
+<section class="diagnose-section">
+  <div class="container">
+    <div class="diagnose-layout">
+
+      <!-- SYMPTOM PANEL -->
+      <div class="sym-panel">
+        <div class="sp-topbar">
+          <span class="sp-title">Symptom Selector</span>
+          <span class="sel-badge" id="selBadge">0 selected</span>
+        </div>
+
+        <div class="sp-search-wrap">
+          <svg width="15" height="15" viewBox="0 0 20 20" fill="none" class="search-ico"><circle cx="8.5" cy="8.5" r="5.5" stroke="currentColor" stroke-width="1.5"/><path d="M13.5 13.5l3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <input type="text" id="symSearch" class="sp-search" placeholder="Search symptoms…" oninput="filterSyms(this.value)"/>
+        </div>
+
+        <div class="cat-row" id="catRow">
+          <button class="cat active" data-cat="all" onclick="setCat(this,'all')">All</button>
+          <button class="cat" data-cat="fever" onclick="setCat(this,'fever')">Fever</button>
+          <button class="cat" data-cat="pain" onclick="setCat(this,'pain')">Pain</button>
+          <button class="cat" data-cat="skin" onclick="setCat(this,'skin')">Skin</button>
+          <button class="cat" data-cat="gastro" onclick="setCat(this,'gastro')">Gastro</button>
+          <button class="cat" data-cat="neuro" onclick="setCat(this,'neuro')">Neuro</button>
+          <button class="cat" data-cat="resp" onclick="setCat(this,'resp')">Respiratory</button>
+        </div>
+
+        <div class="sym-grid" id="symGrid">
+          <div class="sym-loading">Loading symptoms…</div>
+        </div>
+
+        <div class="sp-footer">
+          <button class="btn-clear" onclick="clearAll()">Clear all</button>
+          <button class="btn-diagnose" id="diagnoseBtn" onclick="goPredict()" disabled>
+            Get Diagnosis →
+          </button>
+        </div>
+      </div>
+
+      <!-- SELECTED PANEL -->
+      <div class="selected-panel">
+        <div class="sel-panel-title">Selected Symptoms</div>
+        <div class="sel-empty" id="selEmpty">
+          <svg viewBox="0 0 64 64" fill="none" width="48" height="48"><circle cx="32" cy="32" r="28" stroke="currentColor" stroke-width="1" opacity=".2"/><path d="M32 20v14M32 38v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".4"/></svg>
+          <p>No symptoms selected yet.<br/>Pick from the left panel.</p>
+        </div>
+        <div class="sel-chips" id="selChips"></div>
+        <div class="sel-tip" id="selTip" style="display:none">
+          <svg viewBox="0 0 16 16" fill="none" width="14" height="14"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2"/><path d="M8 7v5M8 5v1" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+          Select at least 3 symptoms for best accuracy
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+{% block scripts %}
+<script src="/static/js/symptoms.js"></script>
+{% endblock %}

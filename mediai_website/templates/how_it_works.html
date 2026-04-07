@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block title %}How It Works — MediAI{% endblock %}
+{% block content %}
+
+<div class="page-hero small">
+  <div class="page-hero-content">
+    <div class="sec-label">The Process</div>
+    <h1 class="page-title">How MediAI Works</h1>
+    <p class="page-sub">From symptom selection to personalised precautions — here's exactly what happens.</p>
+  </div>
+</div>
+
+<section class="hiw-section">
+  <div class="container">
+
+    <div class="hiw-steps">
+      <div class="hiw-step">
+        <div class="hiw-num">01</div>
+        <div class="hiw-body">
+          <h3>Select Your Symptoms</h3>
+          <p>Choose from 132 clinically validated binary symptom indicators. You can search, filter by category (Fever, Pain, Skin, Gastro, Neuro, Respiratory), or scroll through the full list.</p>
+        </div>
+      </div>
+      <div class="hiw-connector"></div>
+      <div class="hiw-step">
+        <div class="hiw-num">02</div>
+        <div class="hiw-body">
+          <h3>ML Inference</h3>
+          <p>Your symptom vector passes through a StandardScaler normalisation, then a Logistic Regression classifier trained on 3,936 patient records with 5-fold cross-validation and GridSearchCV tuning.</p>
+        </div>
+      </div>
+      <div class="hiw-connector"></div>
+      <div class="hiw-step">
+        <div class="hiw-num">03</div>
+        <div class="hiw-body">
+          <h3>Ranked Diagnoses</h3>
+          <p>Top-5 differential diagnoses are returned with probability percentages, a confidence bar, and a Low / Medium / High risk badge based on prediction strength.</p>
+        </div>
+      </div>
+      <div class="hiw-connector"></div>
+      <div class="hiw-step">
+        <div class="hiw-num">04</div>
+        <div class="hiw-body">
+          <h3>Personalised Precautions</h3>
+          <p>For every predicted disease, MediAI provides a tailored precaution guide — what to do, what to avoid, and which emergency signs mean you should call a doctor immediately.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tech Stack -->
+    <div class="hiw-tech">
+      <div class="sec-label" style="text-align:center;margin-bottom:12px">Technology</div>
+      <h2 class="sec-title" style="text-align:center">Built With</h2>
+      <div class="tech-grid">
+        <div class="tech-item"><div class="tech-name">Python 3.11</div><div class="tech-desc">Core language</div></div>
+        <div class="tech-item"><div class="tech-name">Scikit-learn</div><div class="tech-desc">ML framework</div></div>
+        <div class="tech-item"><div class="tech-name">Flask</div><div class="tech-desc">Web backend</div></div>
+        <div class="tech-item"><div class="tech-name">SHAP</div><div class="tech-desc">Explainability</div></div>
+        <div class="tech-item"><div class="tech-name">Pandas / NumPy</div><div class="tech-desc">Data processing</div></div>
+        <div class="tech-item"><div class="tech-name">Joblib</div><div class="tech-desc">Model persistence</div></div>
+        <div class="tech-item"><div class="tech-name">Docker</div><div class="tech-desc">Containerisation</div></div>
+        <div class="tech-item"><div class="tech-name">Render</div><div class="tech-desc">Cloud hosting</div></div>
+      </div>
+    </div>
+
+    <!-- Model Numbers -->
+    <div class="hiw-numbers">
+      <div class="hiw-num-card"><div class="hiw-num-val">91.9%</div><div class="hiw-num-label">Accuracy</div></div>
+      <div class="hiw-num-card"><div class="hiw-num-val">0.997</div><div class="hiw-num-label">ROC-AUC</div></div>
+      <div class="hiw-num-card"><div class="hiw-num-val">5-Fold</div><div class="hiw-num-label">Cross Validation</div></div>
+      <div class="hiw-num-card"><div class="hiw-num-val">3,936</div><div class="hiw-num-label">Training Records</div></div>
+    </div>
+
+    <div style="text-align:center;margin-top:3rem">
+      <a class="btn-primary large" href="/diagnose">Try It Now →</a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

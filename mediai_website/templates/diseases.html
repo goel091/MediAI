@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}Disease Directory — MediAI{% endblock %}
+{% block content %}
+
+<div class="page-hero small">
+  <div class="page-hero-content">
+    <div class="sec-label">Disease Directory</div>
+    <h1 class="page-title">41 Diseases Covered</h1>
+    <p class="page-sub">Browse all diseases, symptoms, and precautions. Click any card to see details.</p>
+  </div>
+</div>
+
+<section class="dir-section">
+  <div class="container">
+    <div class="dir-search-wrap">
+      <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><circle cx="8.5" cy="8.5" r="5.5" stroke="currentColor" stroke-width="1.5"/><path d="M13.5 13.5l3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <input type="text" id="dirSearch" class="dir-search" placeholder="Search diseases…" oninput="filterDir(this.value)"/>
+    </div>
+
+    <div class="dir-grid" id="dirGrid"></div>
+  </div>
+</section>
+
+<!-- Disease Detail Modal -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal()" style="display:none">
+  <div class="modal-box" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-disease-name" id="modalName"></div>
+    <div class="modal-body">
+      <div class="modal-col">
+        <div class="modal-section-title">Common Symptoms</div>
+        <div class="modal-syms" id="modalSyms"></div>
+        <div class="modal-section-title" style="margin-top:16px">Description</div>
+        <div class="modal-desc" id="modalDesc"></div>
+      </div>
+      <div class="modal-col">
+        <div class="modal-prec-title do">✓ What To Do</div>
+        <ul class="modal-prec-list" id="modalDo"></ul>
+        <div class="modal-prec-title avoid" style="margin-top:12px">✗ What To Avoid</div>
+        <ul class="modal-prec-list" id="modalAvoid"></ul>
+        <div class="modal-prec-title emergency" style="margin-top:12px">🚨 Emergency Signs</div>
+        <ul class="modal-prec-list" id="modalEmerg"></ul>
+      </div>
+    </div>
+    <a class="btn-primary modal-cta" href="/diagnose">Check My Symptoms →</a>
+  </div>
+</div>
+
+{% endblock %}
+{% block scripts %}
+<script src="/static/js/precautions.js"></script>
+<script src="/static/js/diseases.js"></script>
+{% endblock %}

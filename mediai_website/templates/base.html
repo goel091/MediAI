@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>{% block title %}MediAI{% endblock %}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/static/css/style.css"/>
+{% block head %}{% endblock %}
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="/">
+      <span class="logo-mark">✦</span>
+      <span>MediAI</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/" class="{% if request.path == '/' %}active{% endif %}">Home</a></li>
+      <li><a href="/diagnose" class="{% if request.path == '/diagnose' %}active{% endif %}">Diagnose</a></li>
+      <li><a href="/diseases" class="{% if request.path == '/diseases' %}active{% endif %}">Diseases</a></li>
+      <li><a href="/how-it-works" class="{% if request.path == '/how-it-works' %}active{% endif %}">How It Works</a></li>
+    </ul>
+    <a class="nav-cta" href="/diagnose">Start Diagnosis</a>
+    <button class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<main>
+{% block content %}{% endblock %}
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand"><span class="logo-mark">✦</span> MediAI</div>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/diagnose">Diagnose</a>
+      <a href="/diseases">Diseases</a>
+      <a href="/how-it-works">How It Works</a>
+    </div>
+    <div class="footer-copy">© 2025 MediAI · Educational Use Only · Not a substitute for medical advice</div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('hamburger').addEventListener('click',()=>{
+  document.getElementById('navLinks').classList.toggle('open');
+});
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY>50);
+});
+</script>
+{% block scripts %}{% endblock %}
+</body>
+</html>
