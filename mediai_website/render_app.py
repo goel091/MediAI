@@ -10,8 +10,10 @@ ML_PROJECT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "dis
 sys.path.insert(0, ML_PROJECT)
 
 from flask import Flask, render_template, request, jsonify
+from flask_cors import CORS
 
 app = Flask(__name__, template_folder="templates", static_folder="static")
+CORS(app)  # Allow Netlify frontend to call this API
 
 # ── Load model at startup (fast — no training) ───────────────────────────────
 predictor  = None
