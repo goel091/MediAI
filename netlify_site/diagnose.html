@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Diagnose — MediAI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/static/css/style.css"/>
+</head>
+<body>
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="/"><span class="logo-mark">&#10022;</span><span>MediAI</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/">Home</a></li>
+      <li><a href="/diagnose" class="active">Diagnose</a></li>
+      <li><a href="/diseases">Diseases</a></li>
+      <li><a href="/how-it-works">How It Works</a></li>
+    </ul>
+    <a class="nav-cta" href="/diagnose">Start Diagnosis</a>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<main>
+<div class="page-hero small">
+  <div class="page-hero-content">
+    <div class="sec-label">AI Diagnosis Engine</div>
+    <h1 class="page-title">Select Your Symptoms</h1>
+    <p class="page-sub">Choose every symptom you are experiencing. More symptoms = more accurate prediction.</p>
+  </div>
+</div>
+<div class="container" style="margin-bottom:0;padding-bottom:0">
+  <div id="modelBanner" style="margin-bottom:12px"></div>
+</div>
+<section class="diagnose-section">
+  <div class="container">
+    <div class="diagnose-layout">
+      <div class="sym-panel">
+        <div class="sp-topbar">
+          <span class="sp-title">Symptom Selector</span>
+          <span class="sel-badge" id="selBadge">0 selected</span>
+        </div>
+        <div class="sp-search-wrap">
+          <svg width="15" height="15" viewBox="0 0 20 20" fill="none" class="search-ico"><circle cx="8.5" cy="8.5" r="5.5" stroke="currentColor" stroke-width="1.5"/><path d="M13.5 13.5l3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <input type="text" id="symSearch" class="sp-search" placeholder="Search symptoms&hellip;" oninput="filterSyms(this.value)"/>
+        </div>
+        <div class="cat-row">
+          <button class="cat active" onclick="setCat(this,'all')">All</button>
+          <button class="cat" onclick="setCat(this,'fever')">Fever</button>
+          <button class="cat" onclick="setCat(this,'pain')">Pain</button>
+          <button class="cat" onclick="setCat(this,'skin')">Skin</button>
+          <button class="cat" onclick="setCat(this,'gastro')">Gastro</button>
+          <button class="cat" onclick="setCat(this,'neuro')">Neuro</button>
+          <button class="cat" onclick="setCat(this,'resp')">Respiratory</button>
+        </div>
+        <div class="sym-grid" id="symGrid"><div class="sym-loading">Loading symptoms&hellip;</div></div>
+        <div class="sp-footer">
+          <button class="btn-clear" onclick="clearAll()">Clear all</button>
+          <button class="btn-diagnose" id="diagnoseBtn" onclick="goPredict()" disabled>Get Diagnosis &rarr;</button>
+        </div>
+      </div>
+      <div class="selected-panel">
+        <div class="sel-panel-title">Selected Symptoms</div>
+        <div class="sel-empty" id="selEmpty">
+          <svg viewBox="0 0 64 64" fill="none" width="48" height="48"><circle cx="32" cy="32" r="28" stroke="currentColor" stroke-width="1" opacity=".2"/><path d="M32 20v14M32 38v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".4"/></svg>
+          <p>No symptoms selected yet.<br/>Pick from the left panel.</p>
+        </div>
+        <div class="sel-chips" id="selChips"></div>
+        <div class="sel-tip" id="selTip" style="display:none">
+          <svg viewBox="0 0 16 16" fill="none" width="14" height="14"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2"/><path d="M8 7v5M8 5v1" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+          Select at least 3 symptoms for best accuracy
+        </div>
+      </div>
+    </div>
+  </div>
+</section></main>
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand"><span class="logo-mark">&#10022;</span> MediAI</div>
+    <div class="footer-links">
+      <a href="/">Home</a><a href="/diagnose">Diagnose</a>
+      <a href="/diseases">Diseases</a><a href="/how-it-works">How It Works</a>
+    </div>
+    <div class="footer-copy">&copy; 2025 MediAI &middot; Educational Use Only</div>
+  </div>
+</footer>
+<script>
+document.getElementById('hamburger').addEventListener('click',()=>{document.getElementById('navLinks').classList.toggle('open');});
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50);});
+</script>
+<script src="/static/js/symptoms.js"></script>
+</body>
+</html>

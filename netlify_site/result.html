@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Your Result — MediAI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/static/css/style.css"/>
+</head>
+<body>
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="/"><span class="logo-mark">&#10022;</span><span>MediAI</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/">Home</a></li>
+      <li><a href="/diagnose">Diagnose</a></li>
+      <li><a href="/diseases">Diseases</a></li>
+      <li><a href="/how-it-works">How It Works</a></li>
+    </ul>
+    <a class="nav-cta" href="/diagnose">Start Diagnosis</a>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<main>
+<div class="page-hero small">
+  <div class="page-hero-content">
+    <div class="sec-label">Diagnosis Complete</div>
+    <h1 class="page-title">Your Results</h1>
+    <p class="page-sub">Based on your symptoms our AI has generated the following analysis.</p>
+  </div>
+</div>
+<section class="result-section">
+  <div class="container result-grid">
+    <div class="result-main">
+      <div class="res-loading" id="resLoading">
+        <div class="spinner"></div>
+        <p>Analysing your symptoms&hellip;</p>
+      </div>
+      <div class="res-card" id="resCard" style="display:none">
+        <div class="res-card-top">
+          <div>
+            <div class="res-label">Primary Diagnosis</div>
+            <div class="res-disease" id="resDisease">&mdash;</div>
+          </div>
+          <div class="res-risk-badge" id="resRisk">&mdash;</div>
+        </div>
+        <div class="res-conf-row">
+          <span class="res-conf-label">Confidence Score</span>
+          <span class="res-conf-val" id="resConf">&mdash;</span>
+        </div>
+        <div class="res-bar-track"><div class="res-bar-fill" id="resBar" style="width:0%"></div></div>
+        <div class="res-divider"></div>
+        <div class="res-section-label">Differential Diagnoses</div>
+        <div class="res-top5" id="resTop5"></div>
+        <div class="res-divider"></div>
+        <div class="res-section-label">Symptoms Analysed</div>
+        <div class="res-sym-chips" id="resSyms"></div>
+        <div class="res-actions">
+          <a class="btn-outline" href="/diagnose">New Diagnosis</a>
+          <button class="btn-outline" onclick="window.print()">Print Result</button>
+        </div>
+        <div class="res-disclaimer">&#9888; This result is for educational purposes only. It is NOT a medical diagnosis. Always consult a qualified healthcare professional.</div>
+      </div>
+    </div>
+    <div class="prec-panel" id="precPanel" style="display:none">
+      <div class="prec-header">
+        <svg viewBox="0 0 24 24" fill="none" width="20" height="20"><path d="M12 2L3 7v5c0 5.5 4 10.7 9 12 5-1.3 9-6.5 9-12V7L12 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        <span>Precautions &amp; Care</span>
+      </div>
+      <div class="prec-disease-name" id="precDisease"></div>
+      <div class="prec-group">
+        <div class="prec-group-title do">&#10003; What To Do</div>
+        <ul class="prec-list" id="precDoList"></ul>
+      </div>
+      <div class="prec-group">
+        <div class="prec-group-title avoid">&#10007; What To Avoid</div>
+        <ul class="prec-list" id="precAvoidList"></ul>
+      </div>
+      <div class="prec-group">
+        <div class="prec-group-title emergency">&#128680; Seek Emergency Care If</div>
+        <ul class="prec-list" id="precEmergList"></ul>
+      </div>
+      <div class="prec-note">This guidance is general. A doctor may give different advice based on your specific condition.</div>
+    </div>
+  </div>
+</section></main>
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand"><span class="logo-mark">&#10022;</span> MediAI</div>
+    <div class="footer-links">
+      <a href="/">Home</a><a href="/diagnose">Diagnose</a>
+      <a href="/diseases">Diseases</a><a href="/how-it-works">How It Works</a>
+    </div>
+    <div class="footer-copy">&copy; 2025 MediAI &middot; Educational Use Only</div>
+  </div>
+</footer>
+<script>
+document.getElementById('hamburger').addEventListener('click',()=>{document.getElementById('navLinks').classList.toggle('open');});
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50);});
+</script>
+<script src="/static/js/precautions.js"></script>
+<script src="/static/js/result.js"></script>
+</body>
+</html>

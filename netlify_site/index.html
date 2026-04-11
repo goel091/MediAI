@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>MediAI — AI Disease Prediction</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/static/css/style.css"/>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="/"><span class="logo-mark">✦</span><span>MediAI</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/" class="active">Home</a></li>
+      <li><a href="/diagnose">Diagnose</a></li>
+      <li><a href="/diseases">Diseases</a></li>
+      <li><a href="/how-it-works">How It Works</a></li>
+    </ul>
+    <a class="nav-cta" href="/diagnose">Start Diagnosis</a>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<main>
+<section class="hero-page">
+  <div class="hero-bg">
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+    <div class="orb orb3"></div>
+    <svg class="hero-grid" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+      <defs><pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+        <path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+      </pattern></defs>
+      <rect width="100%" height="100%" fill="url(#grid)"/>
+    </svg>
+  </div>
+  <div class="hero-content">
+    <div class="hero-tag">Powered by Machine Learning</div>
+    <h1 class="hero-title">Predict Disease<br/><em>Before It Gets Worse</em></h1>
+    <p class="hero-desc">Enter your symptoms and let our AI — trained on 4,920 patient records across 41 diseases — surface the most likely diagnosis with confidence scores, risk levels, and personalised precautions.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="/diagnose">Start Diagnosis</a>
+      <a class="btn-ghost" href="/how-it-works">How it works</a>
+    </div>
+    <div class="hero-chips">
+      <span class="chip">41 Diseases</span>
+      <span class="chip">132 Symptoms</span>
+      <span class="chip">91.9% Accuracy</span>
+      <span class="chip">+ Precautions</span>
+    </div>
+  </div>
+  <div class="hero-cards">
+    <div class="float-card fc-a">
+      <div class="fc-label">Prediction</div>
+      <div class="fc-disease">Dengue Fever</div>
+      <div class="fc-bar"><div class="fc-fill" style="width:84%"></div></div>
+      <div class="fc-conf">84% confidence</div>
+    </div>
+    <div class="float-card fc-b">
+      <div class="fc-risk high">HIGH RISK</div>
+      <div class="fc-sym">fever · joint pain · rash</div>
+    </div>
+    <div class="float-card fc-c">
+      <div class="fc-prec-title">Precautions</div>
+      <div class="fc-prec-item">💧 Stay hydrated</div>
+      <div class="fc-prec-item">🏥 See a doctor</div>
+      <div class="fc-prec-item">🦟 Use mosquito nets</div>
+    </div>
+  </div>
+</section>
+
+<section class="statsbar">
+  <div class="stats-inner">
+    <div class="stat"><span class="stat-n" data-to="4920">0</span><span class="stat-l">Patient Records</span></div>
+    <div class="stat-div"></div>
+    <div class="stat"><span class="stat-n" data-to="41">0</span><span class="stat-l">Diseases</span></div>
+    <div class="stat-div"></div>
+    <div class="stat"><span class="stat-n" data-to="132">0</span><span class="stat-l">Symptoms</span></div>
+    <div class="stat-div"></div>
+    <div class="stat"><span class="stat-n" data-to="92" data-suffix="%">0</span><span class="stat-l">Accuracy</span></div>
+    <div class="stat-div"></div>
+    <div class="stat"><span class="stat-n" data-to="41">0</span><span class="stat-l">Precaution Sets</span></div>
+  </div>
+</section>
+
+<section class="features-section">
+  <div class="container">
+    <div class="sec-label">Why MediAI</div>
+    <h2 class="sec-title">Everything in One Place</h2>
+    <div class="features-grid">
+      <div class="feat-card">
+        <div class="feat-icon"><svg viewBox="0 0 48 48" fill="none" width="40" height="40"><circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="1.5"/><path d="M24 14v10l6 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <h3>Instant Prediction</h3>
+        <p>Select symptoms and get a real ML prediction in under a second with confidence percentage and top-5 differential diagnoses.</p>
+        <a class="feat-link" href="/diagnose">Try it →</a>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon"><svg viewBox="0 0 48 48" fill="none" width="40" height="40"><path d="M12 36V20l12-8 12 8v16" stroke="currentColor" stroke-width="1.5"/><rect x="18" y="26" width="12" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/></svg></div>
+        <h3>Personalised Precautions</h3>
+        <p>Every diagnosis comes with a tailored list of precautions — what to do, what to avoid, and when to seek emergency care.</p>
+        <a class="feat-link" href="/diagnose">See example →</a>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon"><svg viewBox="0 0 48 48" fill="none" width="40" height="40"><circle cx="24" cy="18" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M8 40c0-8.8 7.2-16 16-16s16 7.2 16 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <h3>Risk Assessment</h3>
+        <p>Colour-coded Low / Medium / High risk badge based on prediction confidence — so you know how urgently to act.</p>
+        <a class="feat-link" href="/diagnose">Assess risk →</a>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon"><svg viewBox="0 0 48 48" fill="none" width="40" height="40"><rect x="8" y="8" width="32" height="32" rx="4" stroke="currentColor" stroke-width="1.5"/><path d="M16 24h16M16 16h16M16 32h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <h3>Disease Directory</h3>
+        <p>Browse all 41 diseases with descriptions, common symptoms, and precaution guides in one searchable directory.</p>
+        <a class="feat-link" href="/diseases">Browse →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-box">
+      <h2>Ready to check your symptoms?</h2>
+      <p>Takes less than 2 minutes. Select symptoms, get your diagnosis, read your precautions.</p>
+      <a class="btn-primary large" href="/diagnose">Start Free Diagnosis</a>
+      <div class="cta-disclaimer">⚠ For educational use only — always consult a licensed doctor</div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand"><span class="logo-mark">✦</span> MediAI</div>
+    <div class="footer-links">
+      <a href="/">Home</a><a href="/diagnose">Diagnose</a>
+      <a href="/diseases">Diseases</a><a href="/how-it-works">How It Works</a>
+    </div>
+    <div class="footer-copy">© 2025 MediAI · Educational Use Only</div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('hamburger').addEventListener('click',()=>{document.getElementById('navLinks').classList.toggle('open');});
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50);});
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){animateStats();obs.disconnect();}});},{threshold:0.3});
+const sb=document.querySelector('.statsbar');if(sb)obs.observe(sb);
+function animateStats(){document.querySelectorAll('.stat-n[data-to]').forEach(el=>{const to=+el.dataset.to,sfx=el.dataset.suffix||'';let n=0,step=Math.ceil(to/60);const t=setInterval(()=>{n=Math.min(n+step,to);el.textContent=n.toLocaleString()+sfx;if(n>=to)clearInterval(t);},22);});}
+document.querySelectorAll('.feat-card').forEach((c,i)=>{c.style.opacity='0';c.style.transform='translateY(20px)';c.style.transition=`opacity .5s ${i*.1}s, transform .5s ${i*.1}s`;new IntersectionObserver(([e])=>{if(e.isIntersecting){c.style.opacity='1';c.style.transform='none';}},{threshold:.1}).observe(c);});
+</script>
+</body>
+</html>

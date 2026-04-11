@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>How It Works — MediAI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/static/css/style.css"/>
+</head>
+<body>
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="/"><span class="logo-mark">&#10022;</span><span>MediAI</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/">Home</a></li>
+      <li><a href="/diagnose">Diagnose</a></li>
+      <li><a href="/diseases">Diseases</a></li>
+      <li><a href="/how-it-works" class="active">How It Works</a></li>
+    </ul>
+    <a class="nav-cta" href="/diagnose">Start Diagnosis</a>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<main>
+<div class="page-hero small">
+  <div class="page-hero-content">
+    <div class="sec-label">The Process</div>
+    <h1 class="page-title">How MediAI Works</h1>
+    <p class="page-sub">From symptom selection to personalised precautions &mdash; here&rsquo;s exactly what happens.</p>
+  </div>
+</div>
+<section class="hiw-section">
+  <div class="container">
+    <div class="hiw-steps">
+      <div class="hiw-step"><div class="hiw-num">01</div><div class="hiw-body"><h3>Select Your Symptoms</h3><p>Choose from 132 clinically validated binary symptom indicators. Search, filter by category, or scroll through the full list.</p></div></div>
+      <div class="hiw-connector"></div>
+      <div class="hiw-step"><div class="hiw-num">02</div><div class="hiw-body"><h3>ML Inference</h3><p>Your symptom vector passes through a StandardScaler normalisation, then a Logistic Regression classifier trained on 3,936 patient records with 5-fold cross-validation.</p></div></div>
+      <div class="hiw-connector"></div>
+      <div class="hiw-step"><div class="hiw-num">03</div><div class="hiw-body"><h3>Ranked Diagnoses</h3><p>Top-5 differential diagnoses returned with probability percentages, a confidence bar, and Low / Medium / High risk badge.</p></div></div>
+      <div class="hiw-connector"></div>
+      <div class="hiw-step"><div class="hiw-num">04</div><div class="hiw-body"><h3>Personalised Precautions</h3><p>For every predicted disease, MediAI provides a tailored guide &mdash; what to do, what to avoid, and emergency signs to watch for.</p></div></div>
+    </div>
+    <div class="hiw-tech">
+      <div class="sec-label" style="text-align:center;margin-bottom:12px">Technology</div>
+      <h2 class="sec-title" style="text-align:center">Built With</h2>
+      <div class="tech-grid">
+        <div class="tech-item"><div class="tech-name">Python 3.11</div><div class="tech-desc">Core language</div></div>
+        <div class="tech-item"><div class="tech-name">Scikit-learn</div><div class="tech-desc">ML framework</div></div>
+        <div class="tech-item"><div class="tech-name">Flask</div><div class="tech-desc">Web backend</div></div>
+        <div class="tech-item"><div class="tech-name">SHAP</div><div class="tech-desc">Explainability</div></div>
+        <div class="tech-item"><div class="tech-name">Pandas / NumPy</div><div class="tech-desc">Data processing</div></div>
+        <div class="tech-item"><div class="tech-name">Joblib</div><div class="tech-desc">Model persistence</div></div>
+        <div class="tech-item"><div class="tech-name">Netlify</div><div class="tech-desc">Frontend hosting</div></div>
+        <div class="tech-item"><div class="tech-name">Render</div><div class="tech-desc">API hosting</div></div>
+      </div>
+    </div>
+    <div class="hiw-numbers">
+      <div class="hiw-num-card"><div class="hiw-num-val">91.9%</div><div class="hiw-num-label">Accuracy</div></div>
+      <div class="hiw-num-card"><div class="hiw-num-val">0.997</div><div class="hiw-num-label">ROC-AUC</div></div>
+      <div class="hiw-num-card"><div class="hiw-num-val">5-Fold</div><div class="hiw-num-label">Cross Validation</div></div>
+      <div class="hiw-num-card"><div class="hiw-num-val">3,936</div><div class="hiw-num-label">Training Records</div></div>
+    </div>
+    <div style="text-align:center;margin-top:3rem">
+      <a class="btn-primary large" href="/diagnose">Try It Now &rarr;</a>
+    </div>
+  </div>
+</section></main>
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand"><span class="logo-mark">&#10022;</span> MediAI</div>
+    <div class="footer-links">
+      <a href="/">Home</a><a href="/diagnose">Diagnose</a>
+      <a href="/diseases">Diseases</a><a href="/how-it-works">How It Works</a>
+    </div>
+    <div class="footer-copy">&copy; 2025 MediAI &middot; Educational Use Only</div>
+  </div>
+</footer>
+<script>
+document.getElementById('hamburger').addEventListener('click',()=>{document.getElementById('navLinks').classList.toggle('open');});
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50);});
+</script>
+
+</body>
+</html>
